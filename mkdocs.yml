@@ -1,0 +1,24 @@
+site_name: DAPLAB Official Documentation
+pages:
+- Home: 'index.md'
+- User Documentation:
+    - 'Getting Started': 'getting_started.md'
+    - 'Zefix Project': 'zefix_project.md'
+
+- Tutorials:
+    - 'HDFS Tutorial': 'tutorial_hdfs.md'
+    - 'Hive Tutorial': 'tutorial_hive.md'
+    - 'Pig Tutorial': 'tutorial_pig.md'
+    - 'Spark Tutorial': 'tutorial_spark.md'
+    - 'Kafka Tutorial': 'tutorial_kafka.md'
+
+theme: bootstrap
+site_favicon: logo.png
+
+markdown_extensions:
+    - extra
+    - attr_list
+    - footnotes
+    
+extra_css: 
+    - daplab.css
