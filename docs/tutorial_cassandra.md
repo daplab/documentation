@@ -12,25 +12,6 @@ to access the DAPLAB cluster.
 * The [official documentation from Datastax on CQL](http://docs.datastax.com/en/cql/3.3/cql/cqlIntro.html),
   the query language of Cassandra
 
-# Installation
-
-Hopefully Cassandra is already installed in the DAPLAB environment, and you don't need to
-care about that.
-
-In a nutshell, Cassandra install is really straight forward. Debian/Ubuntu has a few trick
-in there, but you can always refer to the 
-[proper documentation](http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html)
-
-On Redhat/CentOS, at the time of writing:
-```bash
-yum install cassandra22 cassandra22-tools
-```
-
-On Debian/Ubuntu
-```bash
-apt-get install cassandra=2.2.3 cassandra-tools=2.2.3
-```
-
 # Usage
 
 To interact with Cassandra, `cqlsh` will be used
@@ -136,3 +117,29 @@ TRUNCATE TABLE table1;
 DROP TABLE table1;
 ```
 
+# Installation
+
+Hopefully Cassandra is already installed in the DAPLAB environment, and you don't need to
+care about that.
+
+In a nutshell, Cassandra install is really straight forward. Debian/Ubuntu has a few trick
+in there, but you can always refer to the 
+[proper documentation](http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html)
+
+On Redhat/CentOS, at the time of writing:
+```bash
+yum install cassandra22 cassandra22-tools
+```
+
+On Debian/Ubuntu
+```bash
+apt-get install cassandra=2.2.3 cassandra-tools=2.2.3
+```
+
+Important config options in `/etc/cassandra/conf/cassandra.yaml` are:
+
+- `cluster_name`: the name of the cluster, current value is 'DAPLAB1'
+- `num_tokens`: number of tokens (i.e. ranges) a node own in the ring, values are 256 and 512
+- `listen_address` and `rpc_address`: ip addresses the node is listening to, 
+   current value is the public ip address
+- `data_file_directories`: directories where the data is stored.
