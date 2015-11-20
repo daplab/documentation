@@ -20,7 +20,7 @@ Quicklinks:<br/>
 The following configuration can be added in your `~/.ssh/config` file:
 
 ```
-Host daplab-*
+Host pubgw1.daplab.ch
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
@@ -34,13 +34,14 @@ Please update accordingly the parameter `IdentityFile` in the snippet above. You
 also need to set a username using the `User` parameter.
 {: .vscc-notify-warning }
 
-# Set a Password
 
-In SSH
+# SSH into the gateway
 
 ```bash
 ssh pubgw1.daplab.ch
 ```
+
+# Set a Password
 
 Once we've ssh'ed in, you can set a password, which will be used to login into HUE
 
@@ -50,8 +51,21 @@ passwd
 
 And then access [Hue interface](https://api.daplab.ch)
 
-## Hints
+## DAPLAB Admin setup
 
+In order to access to every nodes, transparently via the gw, you can add the following 
+config in your `~/.ssh/config`
+
+```
+Host daplab-*.fri.lan
+    StrictHostKeyChecking no
+    ProxyCommand ssh bperroud@pubgw1.daplab.ch nc %h 22 2> /dev/null
+    PreferredAuthentications publickey
+    IdentityFile ~/.ssh/id_rsa_daplab_new
+    User daplabadm
+```
+
+    
 To access internal UI from outside the DAPLAB wifi, you can use [sshuttle](https://github.com/apenwarr/sshuttle)
  
 ```bash
