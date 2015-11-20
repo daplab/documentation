@@ -11,6 +11,7 @@ pages:
     - 'Pig Tutorial': 'tutorial_pig.md'
     - 'Spark Tutorial': 'tutorial_spark.md'
     - 'Kafka Tutorial': 'tutorial_kafka.md'
+    - 'Cassandra Tutorial': 'tutorial_cassandra.md'
 
 theme: bootstrap
 site_favicon: logo.png
