@@ -30,7 +30,7 @@ Host pubgw1.daplab.ch
     ControlPath ~/.ssh/ssh_control_%h_%p_%r
 ```
 
-Please update accordingly the parameter `IdentityFile` in the snippet above. You might
+Please update accordingly the parameter `IdentityFile` in the above snippet. You might
 also need to set a username using the `User` parameter.
 {: .vscc-notify-warning }
 
@@ -43,30 +43,46 @@ ssh pubgw1.daplab.ch
 
 # Set a Password
 
-Once we've ssh'ed in, you can set a password, which will be used to login into HUE
+Once we've ssh'ed in, you can set a password, which will allow you to login into HUE
 
 ```bash
-passwd
+sudo /usr/bin/passwd $LOGNAME
+
+Enter new UNIX password:
+Retype new UNIX password:
+passwd: password updated successfully
 ```
 
-And then access [Hue interface](https://api.daplab.ch)
+You can now access the [Hue interface](https://api.daplab.ch), and login with the username 
+and password just set. If you loose your password, you can always change it the same 
+way you just set it.
+{: .vscc-notify-info }
 
-## DAPLAB Admin setup
+## DAPLAB Admins Setup
 
-In order to access to every nodes, transparently via the gw, you can add the following 
-config in your `~/.ssh/config`
+This section is specific to the DAPLAB Admins in order to ease their life accessing
+frequently different servers.
+
+In order to access to every nodes transparently via the gw, the following lines can be 
+added in `~/.ssh/config`
 
 ```
 Host daplab-*.fri.lan
     StrictHostKeyChecking no
-    ProxyCommand ssh bperroud@pubgw1.daplab.ch nc %h 22 2> /dev/null
+    ProxyCommand ssh pubgw1.daplab.ch nc %h 22 2> /dev/null
     PreferredAuthentications publickey
-    IdentityFile ~/.ssh/id_rsa_daplab_new
-    User daplabadm
+    IdentityFile ~/.ssh/id_rsa
 ```
 
-    
-To access internal UI from outside the DAPLAB wifi, you can use [sshuttle](https://github.com/apenwarr/sshuttle)
+(_mind updating the params, more particularly the ssh key_)
+
+You can then ssh directly into any internal servers:
+
+```
+ssh daplab-rt-11.fri.lan
+```
+
+To access internal UIs from outside the DAPLAB wifi, you can use [sshuttle](https://github.com/apenwarr/sshuttle)
  
 ```bash
 sshuttle --dns -r pubgw1.daplab.ch 10.10.10.0/24

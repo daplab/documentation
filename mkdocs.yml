@@ -3,7 +3,7 @@ pages:
 - Home: 'index.md'
 - User Documentation:
     - 'Getting Started': 'getting_started.md'
-    - 'Zefix Project': 'zefix_project.md'
+    - 'DAPLAB Architecture': 'architecture.md'
 
 - Tutorials:
     - 'HDFS Tutorial': 'tutorial_hdfs.md'
@@ -12,6 +12,11 @@ pages:
     - 'Spark Tutorial': 'tutorial_spark.md'
     - 'Kafka Tutorial': 'tutorial_kafka.md'
     - 'Cassandra Tutorial': 'tutorial_cassandra.md'
+    - 'All Tutorials': 'tutorial_all.md'
+
+- Projects:
+    - 'Zefix Project': 'project_zefix.md'
+    - 'SwissSim Project': 'project_swisssim.md'
 
 theme: bootstrap
 site_favicon: logo.png
