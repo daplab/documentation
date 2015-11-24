@@ -155,3 +155,21 @@ drop table batting;
 drop table batting_ext;
 drop database ${env:USER}_test;
 ```
+
+# Job Failing in OutOfMemory?
+
+Since Hive is using Tez by default as execution engine, you need to increase the Tez 
+container size.
+
+* In Hive, you can
+
+```
+SET hive.tez.container.size=8192
+SET hive.tez.java.opts=-Xmx7168m
+```
+
+* From the command line, you can
+
+```
+hive --hiveconf hive.tez.container.size=8192 --hiveconf hive.tez.java.opts=-Xmx7168m ...
+```
