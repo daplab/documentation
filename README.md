@@ -38,3 +38,7 @@ it to deploy the new version
 * https://github.com/ocefpaf/python4oceanographers_intro_course/blob/master/mkdocs.yml
 * https://github.com/gajus/gitdown (requires running `node /usr/local/bin/gitdown`)
 
+## Simplify your life generating Markdown Tables
+
+* http://www.tablesgenerator.com/markdown_tables
+

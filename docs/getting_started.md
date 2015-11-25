@@ -93,3 +93,12 @@ And then you can ssh to daplab servers as if you where local to the infrastructu
 ```bash
 ssh daplab-wn-03
 ```
+
+**MacOS Yosemite Users ?**
+
+You need to add an extra route in order to have the setup working properly (more details
+[here](http://www.evoila.de/openstack-opensource/running-a-poors-man-vpn-on-yosemite-with-sshuttle-and-ssh/?lang=en)):
+
+```
+sudo route add -net 10.10.10.0/24 160.98.23.11
+```
