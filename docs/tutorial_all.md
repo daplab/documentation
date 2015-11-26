@@ -10,6 +10,7 @@ community driven, don't hesitate to update, enhance or just fix a typo.
 - [Pig Hello World](tutorial_pig.md) -- Hello world introduction to [Pig](https://pig.apache.org/)
 - [Spark Hello World](tutorial_spark.md) -- Hello world introduction to [Spark](https://spark.apache.org/)
 - [Kafka Hello World](tutorial_kafka.md) -- Hello world introduction to [Kafka](https://kafka.apache.org/)
+- [Cassandra Hello World](tutorial_cassandra.md) -- Hello world introduction to [Cassandra](https://cassandra.apache.org/)
 
 ### Data Science
 

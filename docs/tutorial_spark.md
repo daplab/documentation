@@ -40,7 +40,7 @@ Woot! Enjoy running Spark!
 
 # SparkSQL
 
-[SparkQL](https://spark.apache.org/sql/0 is a module of Spark to work with structured data, 
+[SparkQL](https://spark.apache.org/sql/) is a module of Spark to work with structured data, 
 i.e. data is an associated schema or metadata. It is seamlessly associated with Hive. 
 The following few lines show how query Hive from Spark:
 
@@ -48,13 +48,15 @@ The following few lines show how query Hive from Spark:
 // (inside Spark repl)
 val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
   
-sqlContext.sql("FROM meteo SELECT date, temperature, station WHERE station = 'SMA'").collect().foreach(println)
+sqlContext.sql("FROM meteo SELECT date, temperature, station WHERE station = 'SMA'")
+  .collect().foreach(println)
 ```
 
 Or, as an example, you can filter in Spark instead of in Hive:
 
 ```scala
-sqlContext.sql("FROM meteo SELECT date, temperature, station").filter(r => r(2) == "SMA").collect().foreach(println)
+sqlContext.sql("FROM meteo SELECT date, temperature, station").filter(r => r(2) == "SMA")
+  .collect().foreach(println)
 ```
 
 * TODO: what is the different execution plan between filtering in Hive versus filtering in Spark?
