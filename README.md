@@ -28,7 +28,7 @@ A convenient script, [generate-docs.sh](generate-doc.sh), is capturing all that.
 it to deploy the new version
 
 ```bash
-./generate-doc.sh
+./publish-doc.sh
 ```
 
 # References
