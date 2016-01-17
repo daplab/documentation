@@ -20,6 +20,7 @@ pages:
     
 - Others:
     - 'Twitter API Credentials': 'twitter_account.md'
+    - 'Ambari Cheat Sheet': 'ambari_cheat_sheet.md'
 
 theme: bootstrap
 site_favicon: logo.png
