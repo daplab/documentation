@@ -35,7 +35,7 @@ The approach implemented to meet these requirements includes the following compo
 SSL Termination is a way of handling SSL overhead (hand-shake, encryption, etc) in one place, and for this proxy
 forwarding plain traffic to the destination endpoint. This obviously should be exclusively done in trusted environments.
 
-For this implementation, we used Pound.
+For this implementation, we used [Pound](http://www.apsis.ch/pound/).
 
 From Pound, the clear traffic can be redirected to virtually everywhere.
 
