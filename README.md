@@ -2,7 +2,9 @@ DAPLAB Official Documentation
 =============
 
 This repo holds the official documentation of the DAPLAB, compiled and deployed at the following 
-URL: [http://docs.daplab.ch](http://docs.daplab.ch)
+URL: [https://docs.daplab.ch](https://docs.daplab.ch)
+
+This documentation is hosted with ❤ by the [DAPLAB](http://daplab.ch) team.
 
 The current documentation relies havily on [Markdown](https://daringfireball.net/projects/markdown/)
 for the syntaxe and [Mkdocs](http://www.mkdocs.org/) for the static generation.

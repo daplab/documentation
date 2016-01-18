@@ -14,3 +14,6 @@ which we’ll match with the new data ingested,
 and notify (via email or callbacks) when a match is found.
 
 ![Zefix](2015-10-07_1247.png)
+
+If you find cool writing such piece of software, join us every Thursday evening for our weekly [Hacky Thursdays](http://daplab.ch/#hacky)!
+{: .vscc-notify-info }

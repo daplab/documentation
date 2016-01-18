@@ -17,6 +17,7 @@ pages:
 - Projects:
     - 'Zefix Project': 'project_zefix.md'
     - 'SwissSim Project': 'project_swisssim.md'
+    - 'Hive Auto Partitioner': 'project_hiveautopartitioner.md'
     
 - Others:
     - 'Twitter API Credentials': 'twitter_account.md'
