@@ -69,12 +69,12 @@ added in `~/.ssh/config`
 ```
 Host daplab-*.fri.lan
     StrictHostKeyChecking no
-    ProxyCommand ssh pubgw1.daplab.ch nc %h 22 2> /dev/null
+    ProxyCommand ssh user@pubgw1.daplab.ch nc %h 22 2> /dev/null
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa
 ```
 
-(_mind updating the params, more particularly the ssh key_)
+(_mind updating the params, more particularly the ssh key and the User_)
 
 You can then ssh directly into any internal servers:
 

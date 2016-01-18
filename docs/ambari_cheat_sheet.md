@@ -22,33 +22,32 @@ ambari_credentials="admin:amin"
 List all the hosts:
 
 ```bash
-curl -v -k -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/hosts
+curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/hosts
 ```
 
-* ''-k'' because our SSL certificate is not signed by a CA authority
-* ''-u'' to provide credentials
-* ''-X GET'' is optional, but show how to send a ''-X POST'' or ''-X DELETE'' request for instance
-* ''-H 'X-Requested-By:ambari''' is a magic mandatory keyword
-* ''-v'' gives more details about the response, including the [http://en.wikipedia.org/wiki/List_of_HTTP_status_codes HTTP status code]
+* `-u` to provide credentials
+* `-X GET` is optional, but show how to send a `-X POST` or `-X DELETE` request for instance
+* `-H 'X-Requested-By:ambari'` is a mandatory magic argument __avoiding__ CSRS
+* `-v` gives more details about the response, including the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 
 
 # Alerts Definition
 
-http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/_alert_definitions_and_instances.html
-https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/alert-definitions.md
+* http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/_alert_definitions_and_instances.html
+* https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/alert-definitions.md
 
 ```bash
-curl -v -k -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
+curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
 ```
 
-curl -v -k -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions?AlertDefinition/service_name=PIG
+curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions?AlertDefinition/service_name=PIG
 
 
 
 
 /usr/local/bin/ambari_check_test.sh
 
-curl -v -k -X POST --data "$payload" -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
+curl -v -X POST --data "$payload" -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
 
 payload='{
   "AlertDefinition" : {
@@ -70,6 +69,6 @@ payload='{
   }
 }'
 
-curl -v -k -X DELETE -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions/102
+curl -v -X DELETE -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions/102
 
 
