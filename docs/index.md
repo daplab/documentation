@@ -18,12 +18,13 @@ to enhance the documentation by submitting pull requests of the
 
 
 The DAPLAB platform is currently running 
-[**HDP 2.3.x**](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.2/index.html)
+[**HDP 2.3.x**](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4/index.html)
 based on **Hadoop 2.7.x**, with 
-[Ambari 2.1.x](http://docs.hortonworks.com/HDPDocuments/Ambari-2.1.2.1/index.html) 
+[Ambari 2.2.x](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/index.html) 
 for management.
 {: .vscc-notify-success }
 
+![Commodity Hardware](0hardware0.jpeg){: width=720px }
 
 Access to the DAPLAB Platform
 -----------------------------
@@ -34,22 +35,25 @@ to the servers running the components. See the architecture page for more detail
 
 ### Web Interfaces
 
--   Hue: <https://api.daplab.ch>
+-   Hue: <https://hue.daplab.ch>
 -   Ambari: <https://admin.daplab.ch>
 
 ### Programmatic Interfaces
 
--   SSH: `ssh <yourusername>@pubgw1.daplab.ch`
+-   SSH: `ssh -p2201 <yourusername>@pubgw1.daplab.ch`
 
 Audience
 ---------
 
-No need to have a Ph.D. in Data Scientist to be interested in data, and to have
+No need to have a Ph.D. in Science to be interested in data and to have
 a valuable perspective when looking at data. Indeed, when searching the needle in the 
 data haystack, the wider background and broader perspective the better. 
 
 The DAPLAB follows this reality and is thus open to everyone, 
 the only requirement is to have a computer :)
+
+We meet every [Thursday evening](hacky_thursday.md) for hacking data
+
 
 Tutorials
 ---------

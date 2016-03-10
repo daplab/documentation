@@ -9,12 +9,12 @@ to access the DAPLAB cluster.
 
 # Resources 
 
-* The [official Spark documentation](https://spark.apache.org/docs/1.4.1/) is an
+* The [official Spark documentation](https://spark.apache.org/docs/1.5.1/) is an
   excellent starting point.
 
 # Running Spark
 
-The following command will run the HDP version of Spark, 1.4.1 at the time of writing.
+The following command will run the HDP version of Spark, 1.5.1 at the time of writing.
 
 ```bash
 spark-shell --master yarn-master --conf spark.ui.port=$(shuf -i 2000-65000 -n 1)
@@ -24,7 +24,7 @@ spark-shell --master yarn-master --conf spark.ui.port=$(shuf -i 2000-65000 -n 1)
       ____              __
      / __/__  ___ _____/ /__
     _\ \/ _ \/ _ `/ __/  '_/
-   /___/ .__/\_,_/_/ /_/\_\   version 1.4.1
+   /___/ .__/\_,_/_/ /_/\_\   version 1.5.1
       /_/
 ```
 
@@ -85,11 +85,11 @@ val r = sc.cassandraTable("test_bperroud", "countercf").collect().foreach(printl
 
 # Understand Closures
 
-
 ## What not to do
 
 Don't do this
 
+```
 // this runs in the driver
 val foo = new SomeExpensiveNotSerializableThing
 someRdd.map { x =>
@@ -97,19 +97,24 @@ someRdd.map { x =>
   // the attempt to close over foo will throw NotSerializableException
   foo.mangle(x)
 }
+```
+
 Don't do this either
 
+```
 someRdd.map { x =>
   // this runs in the executor, ok...
   // but gets constructed for every element in the RDD, so will be slow
   val foo = new SomeExpensiveNotSerializableThing
   foo.mangle(x)
 }
+```
 
 ## What to do
 
 Do this instead:
 
+```
 someRdd.mapPartitions { part =>
   // this runs in the executor, constructed only once per group of elements
   val foo = new SomeExpensiveNotSerializableThing
@@ -118,3 +123,11 @@ someRdd.mapPartitions { part =>
     foo.mangle(x)
   }
 }
+```
+
+# PySpark
+
+```
+export SPARK_HOME=/usr/hdp/current/spark-client/
+export PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/build:${SPARK_HOME}/python/lib/py4j-0.8.2.1-src.zip
+```

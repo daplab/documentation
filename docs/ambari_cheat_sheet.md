@@ -12,7 +12,7 @@ In all the examples below, `${ambari_credentials}` refers to your `username` and
 used to log into Ambari UI, concatenated with `:` -- `admin:admin` by default:
 
 ```bash
-ambari_credentials="admin:amin"
+ambari_credentials="admin:admin"
 ```
 
 # REST API
@@ -40,7 +40,7 @@ curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin
 curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
 ```
 
-curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions?AlertDefinition/service_name=PIG
+curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions?AlertDefinition/service_name=HIVE
 
 
 
@@ -70,5 +70,7 @@ payload='{
 }'
 
 curl -v -X DELETE -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions/102
+
+
 
 

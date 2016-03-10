@@ -1,7 +1,7 @@
 
 Quicklinks:<br/>
-- [Hue interface https://api.daplab.ch](https://api.daplab.ch)<br/>
-- SSH access `ssh pubgw1.daplab.ch`
+- [Hue interface https://hue.daplab.ch](https://hue.daplab.ch)<br/>
+- SSH access `ssh -p 2201 pubgw1.daplab.ch`
 {: .vscc-notify-success }
 
 
@@ -13,7 +13,8 @@ Quicklinks:<br/>
 
 # Creating an account
 
- ==> Send your **public** SSH key to Benoit
+* &nbsp; &nbsp; Send your **public** SSH key to [Benoit](mailto:benoit@daplab.ch)
+{: .fa .fa-arrow-right}
 
 # Environment Setup
 
@@ -21,6 +22,7 @@ The following configuration can be added in your `~/.ssh/config` file:
 
 ```
 Host pubgw1.daplab.ch
+    Port 2201
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
@@ -38,8 +40,12 @@ also need to set a username using the `User` parameter.
 # SSH into the gateway
 
 ```bash
-ssh pubgw1.daplab.ch
+ssh -p 2201 pubgw1.daplab.ch
 ```
+
+For enhanced security reasons, we decided to move the SSH port to `2201`. Please remember that trick.
+{: .vscc-notify-warning }
+
 
 # Set a Password
 
@@ -53,10 +59,24 @@ Retype new UNIX password:
 passwd: password updated successfully
 ```
 
-You can now access the [Hue interface](https://api.daplab.ch), and login with the username 
+You can now access the [Hue interface](https://hue.daplab.ch), and login with the username 
 and password just set. If you loose your password, you can always change it the same 
 way you just set it.
 {: .vscc-notify-info }
+
+# Python 2.7
+
+In order to have python 2.7 as the default version, please run:
+
+```
+scl enable python27 bash
+```
+
+Validate that it's ok:
+```
+python --version
+Python 2.7.5
+```
 
 ## DAPLAB Admins Setup
 
@@ -69,7 +89,7 @@ added in `~/.ssh/config`
 ```
 Host daplab-*.fri.lan
     StrictHostKeyChecking no
-    ProxyCommand ssh user@pubgw1.daplab.ch nc %h 22 2> /dev/null
+    ProxyCommand ssh pubgw1.daplab.ch nc %h 22 2> /dev/null
     PreferredAuthentications publickey
     IdentityFile ~/.ssh/id_rsa
 ```

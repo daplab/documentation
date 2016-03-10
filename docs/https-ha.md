@@ -19,25 +19,26 @@ The goal of this project is:
 There're dozen of approaches to achieve that, all of them having pros and cons. And for every solution, a dozen
 of different softwares can do the job.
 
-In the case of the DAPLAB, there're no servers with public IPs, they are all behind a router
+In the case of the DAPLAB, no servers have public IPs, they are all hidden behind a router on a private subnet
 so we have to heavily rely on destination NAT. Don't be surprised to see port 443 being NAT'ed in the approach.
 
-The approach implemented to meet these requirements includes the following components that will be detailled below.
+The approach implemented to meet these requirements includes the following components that will be detailed below.
 
 * SSL termination
-* A floating IP
+* A floating IP, also know as [VRRP](https://en.wikipedia.org/wiki/Virtual_Router_Redundancy_Protocol)
 * A DNS failover
 
-![HTTPS High Availability](https-ha.png)
+![HTTPS High Availability](https-ha.png){: width=720px }
 
 # SSL Termination
 
 SSL Termination is a way of handling SSL overhead (hand-shake, encryption, etc) in one place, and for this proxy
 forwarding plain traffic to the destination endpoint. This obviously should be exclusively done in trusted environments.
 
-For this implementation, we used [Pound](http://www.apsis.ch/pound/).
+For this implementation, we used [Nginx](http://nginx.org/).
 
-From Pound, the clear traffic can be redirected to virtually everywhere.
+From Nginx, the clear (de-ssl'ized) traffic can be redirected to virtually everywhere, including 
+loadbalancing between several backend servers.
 
 # Floating IP
 
@@ -49,24 +50,14 @@ getting the traffic.
 
 This is a fairly easy technique to achieve high availability on an IP address.
 
-We used the defacto keepalived service for that purpose.
-
-# DNS Failover
-
-So far the DNS failover is done by an external service. Two small VPS instances with 
-a proper open-source GSLB service is an option that will be explore shortly
+We used the defacto [keepalived](http://keepalived.org/) service for that purpose.
 
 # Deployment of a new endpoint
 
-In order to deploy new enpoints, we rely on Ansible to push the new Pound config as well as add the new dns entry in the zone.
-
-TODO: Pound config reload?
+In order to deploy new endpoints, we rely on Ansible to push the new nginx config as well as add the new dns entry in the zone.
 
 # Area of improvements
 
-* With one router, it's better to configure a floating IP since the router can usually forward the NAT'ed traffic
-  to one ip. With two routers, each of the router could forward to one SSL termination. With that, no floating IP,
-  no router SPoF, and the ability to scale out the incoming load in adding SSL terminations.
 * IP source logging at the destination endpoint. As of today, the destination endpoint sees only the SSL termination
   ip address, which might be a bit embarrassing to compute the access of unique ips :)
 

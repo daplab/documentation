@@ -4,6 +4,7 @@ pages:
 - User Documentation:
     - 'Getting Started': 'getting_started.md'
     - 'DAPLAB Architecture': 'architecture.md'
+    - 'Data Craftmanship': 'data_craftsmanship.md'
 
 - Tutorials:
     - 'HDFS Tutorial': 'tutorial_hdfs.md'
@@ -19,12 +20,16 @@ pages:
     - 'SwissSim Project': 'project_swisssim.md'
     - 'Hive Auto Partitioner': 'project_hiveautopartitioner.md'
     - 'Highly available HTTPS': 'https-ha.md'
+    - 'Notebook': 'notebook/index.md'
+    - 'Nutch Cralwer': 'project_nutch.md'
 
 - Others:
+    - 'Hacky Thursdays': 'hacky_thursdays.md'
     - 'Twitter API Credentials': 'twitter_account.md'
     - 'Ambari Cheat Sheet': 'ambari_cheat_sheet.md'
 
-theme: bootstrap
+#theme: cosmo
+theme: flatly
 site_favicon: logo.png
 
 markdown_extensions:

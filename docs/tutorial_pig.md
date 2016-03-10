@@ -14,10 +14,10 @@ This tutorial is a mix between several tutorials from HortonWorks, working on th
 * [http://hortonworks.com/hadoop-tutorial/how-to-use-hcatalog-basic-pig-hive-commands/](http://hortonworks.com/hadoop-tutorial/how-to-use-hcatalog-basic-pig-hive-commands/)
 * [http://hortonworks.com/hadoop-tutorial/faster-pig-tez/](http://hortonworks.com/hadoop-tutorial/faster-pig-tez/)
 
-The Pig Latin (v0.14) reference is always good to keep close by too.
+The Pig Latin (v0.15) reference is always good to keep close by too.
 
-* [http://pig.apache.org/docs/r0.14.0/basic.html](http://pig.apache.org/docs/r0.14.0/basic.html)
-* [http://pig.apache.org/docs/r0.14.0/func.html](http://pig.apache.org/docs/r0.14.0/func.html)
+* [http://pig.apache.org/docs/r0.15.0/basic.html](http://pig.apache.org/docs/r0.15.0/basic.html)
+* [http://pig.apache.org/docs/r0.15.0/func.html](http://pig.apache.org/docs/r0.15.0/func.html)
 
 # Pig reading from HDFS
 
