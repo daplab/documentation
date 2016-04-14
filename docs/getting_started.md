@@ -16,6 +16,10 @@ Quicklinks:<br/>
 * &nbsp; &nbsp; Send your **public** SSH key to [Benoit](mailto:benoit@daplab.ch)
 {: .fa .fa-arrow-right}
 
+Please read carefully the first login section below for the first login.
+{: .vscc-notify-warning }
+
+
 # Environment Setup
 
 The following configuration can be added in your `~/.ssh/config` file:
@@ -23,7 +27,7 @@ The following configuration can be added in your `~/.ssh/config` file:
 ```
 Host pubgw1.daplab.ch
     Port 2201
-    PreferredAuthentications publickey
+    PreferredAuthentications publickey,password
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
     ProxyCommand none
@@ -34,7 +38,7 @@ Host pubgw1.daplab.ch
 
 Please update accordingly the parameter `IdentityFile` in the above snippet. You might
 also need to set a username using the `User` parameter.
-{: .vscc-notify-warning }
+{: .vscc-notify-info }
 
 
 # SSH into the gateway
@@ -43,25 +47,38 @@ also need to set a username using the `User` parameter.
 ssh -p 2201 pubgw1.daplab.ch
 ```
 
-For enhanced security reasons, we decided to move the SSH port to `2201`. Please remember that trick.
+For enhanced security reasons, we decided to move the SSH port to `2201`. If you
+use the ssh config above, you're not forced to remember this trick
 {: .vscc-notify-warning }
 
 
-# Set a Password
+# First login: Set a Password
 
-Once we've ssh'ed in, you can set a password, which will allow you to login into HUE
+The first time you'll login into the server, you'll have to set a new password.
+You should have received the initial, temporary password via email. If not,
+[request the password again](mailto:benoit@daplab.ch?Subject=Password Recovery).
+
+The password has to contain letters, numbers and special sings, and can't be based
+on a dictionary word.
 
 ```bash
-sudo /usr/bin/passwd $LOGNAME
-
-Enter new UNIX password:
-Retype new UNIX password:
-passwd: password updated successfully
+$ ssh pubgw1.daplab.ch
+bperroud@pubgw1.daplab.ch's password:
+Password expired. Change your password now.
+Last login: Thu Apr  7 08:19:24 2016 from 10.10.10.109
+WARNING: Your password has expired.
+You must change your password now and login again!
+Changing password for user bperroud.
+Current Password:
+New password:
+Retype new password:
+passwd: all authentication tokens updated successfully.
+Shared connection to pubgw1.daplab.ch closed.
 ```
 
 You can now access the [Hue interface](https://hue.daplab.ch), and login with the username 
-and password just set. If you loose your password, you can always change it the same 
-way you just set it.
+and password just set. If you lost your password, you can always
+[request the re-generate the password](mailto:benoit@daplab.ch?Subject=Password Recovery).
 {: .vscc-notify-info }
 
 # Python 2.7
@@ -69,14 +86,16 @@ way you just set it.
 In order to have python 2.7 as the default version, please run:
 
 ```
-scl enable python27 bash
+module load python2.7
 ```
 
 Validate that it's ok:
 ```
 python --version
-Python 2.7.5
+Python 2.7.11
 ```
+
+Woot!
 
 ## DAPLAB Admins Setup
 
@@ -90,7 +109,7 @@ added in `~/.ssh/config`
 Host daplab-*.fri.lan
     StrictHostKeyChecking no
     ProxyCommand ssh pubgw1.daplab.ch nc %h 22 2> /dev/null
-    PreferredAuthentications publickey
+    PreferredAuthentications publickey,password
     IdentityFile ~/.ssh/id_rsa
 ```
 
