@@ -2,10 +2,10 @@ Notebook
 ==============================
 
 
-## Enable python 2.7: 
+## Enable python 2.7
 
 ```
-scl enable python27 bash
+module load python2.7
 ```
 
 ## Launch your own notebook
