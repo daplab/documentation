@@ -22,6 +22,7 @@ pages:
     - 'Highly available HTTPS': 'https-ha.md'
     - 'Notebook': 'notebook/index.md'
     - 'Nutch Cralwer': 'project_nutch.md'
+    - 'HiveQLBot': 'project_hive-ql-bot.md'
 
 - Others:
     - 'Hacky Thursdays': 'hacky_thursdays.md'
