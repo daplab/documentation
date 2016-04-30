@@ -1,6 +1,6 @@
 
 Quicklinks:<br/>
-- [Hue interface https://hue.daplab.ch](https://hue.daplab.ch)<br/>
+- [Hue interface -- https://hue.daplab.ch](https://hue.daplab.ch)<br/>
 - SSH access `ssh -p 2201 pubgw1.daplab.ch`
 {: .vscc-notify-success }
 
@@ -130,7 +130,7 @@ sshuttle --dns -r pubgw1.daplab.ch 10.10.10.0/24
 And then you can ssh to daplab servers as if you where local to the infrastructure;
 
 ```bash
-ssh daplab-wn-03
+ssh daplab-gw-1.fri.lan
 ```
 
 **MacOS Yosemite Users ?**
