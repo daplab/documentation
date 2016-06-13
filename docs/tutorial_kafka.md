@@ -26,17 +26,28 @@ It's thus always a trade-off to decide which one to pick, depending what you're 
 to build. Lots of softwares are using both Simple and Group consumer, 
 depending the task to achieve. 
 
+# Before Starting: Zookeeper config
+
+All the following examples assume you're running on the DAPLAB infrastructure.
+We're setting the servers into variable for sake of clarity and
+protability in the examples below.
+
+```
+ZK=daplab-wn-22.fri.lan,daplab-wn-25.fri.lan,daplab-wn-33.fri.lan
+BROKERS=daplab-rt-11.fri.lan:6667,daplab-rt-12.fri.lan:6667,daplab-rt-13.fri.lan:6667,daplab-rt-14.fri.lan:6667
+```
+
 # Listing existing topics
 
 ```bash
-/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper zookeeper1.fri.lan --list
+/usr/hdp/current/kafka-broker/bin/kafka-topics.sh --zookeeper $ZK --list
 ```
 
 # Create a new topic
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create \
-  --zookeeper zookeeper1.fri.lan \
+  --zookeeper $ZK
   --replication-factor 2 \
   --partitions 1 \
   --topic test-$(whoami)
@@ -51,7 +62,7 @@ must be slightly adapted.
 
 ```bash
 echo -e "message1\nmessage2\nmessage3" | /usr/hdp/current/kafka-broker/bin/kafka-console-producer.sh \
-  --broker-list kafka1.fri.lan:6667 \
+  --broker-list $BROKERS \
   --topic test-$(whoami)
 ```
 
@@ -61,7 +72,7 @@ This command line call helps you validating if your messages have been properly 
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-run-class.sh kafka.tools.GetOffsetShell \
-  --broker-list kafka1.fri.lan:6667 \
+  --broker-list $BROKERS \
   --time -1 \
   --topic test-$(whoami)
 ```
@@ -72,7 +83,7 @@ Read the 3 first messages from partition 0 of the topic:
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-simple-consumer-shell.sh \
-  --broker-list kafka1.fri.lan:6667 \
+  --broker-list $BROKERS \
   --topic test-$(whoami) \
   --offset -2 \
   --max-messages 3 \
@@ -83,7 +94,7 @@ Read the first 3 messages of the topic, if you have more than one partition
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-console-consumer.sh \
-  --zookeeper zookeeper1.fri.lan \
+  --zookeeper $ZK \
   --topic test-$(whoami) \
   --from-beginning \
   --max-messages 3
@@ -102,3 +113,19 @@ git clone https://github.com/daplab/kafka-starter.git
 ## Build it
 mvn clean install
 ```
+
+
+# New Consumer API
+
+http://www.confluent.io/blog/tutorial-getting-started-with-the-new-apache-kafka-0.9-consumer-client
+
+org.apache.kafka.clients.consumer.CommitFailedException: Commit cannot be completed due to group rebalance
+  at org.apache.kafka.clients.consumer.internals.ConsumerCoordinator$OffsetCommitResponseHandler.handle(ConsumerCoordinator.java:552) ~[kafka-clients-0.9.0.1.jar:na]
+
+Long message processing time and consumer liveness
+
+i.e. use pause and resume.
+
+Mind threads.
+
+

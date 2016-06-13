@@ -37,6 +37,6 @@ markdown_extensions:
     - extra
     - attr_list
     - footnotes
-    
-extra_css: 
+
+extra_css:
     - daplab.css
