@@ -16,13 +16,14 @@ pages:
     - 'Cassandra Tutorial': 'tutorials/cassandra.md'
 
 - Projects:
-    - 'Zefix Project': 'project_zefix.md'
-    - 'SwissSim Project': 'project_swisssim.md'
-    - 'Hive Auto Partitioner': 'project_hiveautopartitioner.md'
-    - 'Highly available HTTPS': 'https-ha.md'
+    - 'All Projects': 'projects/index.md'
+    - 'Highly available HTTPS': 'projects/https-ha.md'
+    - 'Hive Auto Partitioner': 'projects/hiveautopartitioner.md'
+    - 'HiveQLBot': 'projects/hive-ql-bot.md'
     - 'Notebook': 'notebook/index.md'
-    - 'Nutch Cralwer': 'project_nutch.md'
-    - 'HiveQLBot': 'project_hive-ql-bot.md'
+    - 'Nutch Crawler': 'projects/nutch.md'
+    - 'SwissSim Project': 'projects/swisssim.md'
+    - 'Zefix Project': 'projects/zefix.md'
 
 - Others:
     - 'Hacky Thursdays': 'hacky_thursdays.md'

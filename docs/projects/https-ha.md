@@ -1,4 +1,6 @@
-What is the common point between 
+# Introduction
+
+What is the common point between
 
 * [https://docs.daplab.ch](https://docs.daplab.ch)
 * [https://api.daplab.ch](https://api.daplab.ch)
@@ -37,7 +39,7 @@ forwarding plain traffic to the destination endpoint. This obviously should be e
 
 For this implementation, we used [Nginx](http://nginx.org/).
 
-From Nginx, the clear (de-ssl'ized) traffic can be redirected to virtually everywhere, including 
+From Nginx, the clear (de-ssl'ized) traffic can be redirected to virtually everywhere, including
 loadbalancing between several backend servers.
 
 # Floating IP
@@ -60,4 +62,3 @@ In order to deploy new endpoints, we rely on Ansible to push the new nginx confi
 
 * IP source logging at the destination endpoint. As of today, the destination endpoint sees only the SSL termination
   ip address, which might be a bit embarrassing to compute the access of unique ips :)
-
