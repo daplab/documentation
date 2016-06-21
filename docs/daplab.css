@@ -2,11 +2,46 @@
 @import url('//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans');
 
+/* =========== */
+body {
+    font-family: "Open Sans", Arial;
+    line-height: 1.5;
+}
+div[role="main"]{
+    text-align: justify;
+}
+
+h1,h2,h3,h4,h5 {
+    margin-top: 30px;
+    margin-bottom: 20px;
+}
+
+blockquote {
+    margin: 17px 10px 17px 25px;
+}
+
+div.col-md-9 img {
+    margin: auto;
+    display: block;
+}
+
+code {
+    padding: 2px 4px;
+    font-size: 90%;
+    color: #c7254e;
+    white-space: nowrap;
+    background: #f9f2f4;
+    border-radius: 4px;
+    border: none;
+}
+
+/* =========== */
 
 .vscc-notify-info, .vscc-notify-success, .vscc-notify-warning, .vscc-notify-error {
     padding:10px 10px 10px 20px;
-    margin:10px 0;
+    margin:15px 0;
     border-radius:10px;
+    text-align: left;
 }
 .vscc-notify-info:before, .vscc-notify-success:before, .vscc-notify-warning:before, .vscc-notify-error:before {
     font-family:FontAwesome;
@@ -57,6 +92,3 @@
 table {
     empty-cells: hide;
 }
-
-
-

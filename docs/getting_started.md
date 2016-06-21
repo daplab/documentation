@@ -1,3 +1,4 @@
+# Accessing the DAPLAB
 
 Quicklinks:<br/>
 - [Hue interface -- https://hue.daplab.ch](https://hue.daplab.ch)<br/>
@@ -5,13 +6,13 @@ Quicklinks:<br/>
 {: .vscc-notify-success }
 
 
-# Pre-requirements
+## Pre-requirements
 
 * **SSH client** (for Windows, we recommend the use of [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
   and see [how to create a key with PuTTY](https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-putty-on-digitalocean-droplets-windows-users))
 * **A browser** -- well, if you can access this page, you should have met this requirement :)
 
-# Creating an account
+## Creating an account
 
 * &nbsp; &nbsp; Send your **public** SSH key to [Benoit](mailto:benoit@daplab.ch)
 {: .fa .fa-arrow-right}
@@ -20,7 +21,7 @@ Please read carefully the first login section below for the first login.
 {: .vscc-notify-warning }
 
 
-# Environment Setup
+## Environment Setup
 
 The following configuration can be added in your `~/.ssh/config` file:
 
@@ -41,7 +42,7 @@ also need to set a username using the `User` parameter.
 {: .vscc-notify-info }
 
 
-# SSH into the gateway
+## SSH into the gateway
 
 ```bash
 ssh -p 2201 pubgw1.daplab.ch
@@ -52,14 +53,15 @@ use the ssh config above, you're not forced to remember this trick
 {: .vscc-notify-warning }
 
 
-# First login: Set a Password
+## First login: Set a Password
 
 The first time you'll login into the server, you'll have to set a new password.
 You should have received the initial, temporary password via email. If not,
 [request the password again](mailto:benoit@daplab.ch?Subject=Password Recovery).
 
-The password has to contain letters, numbers and special sings, and can't be based
+The password has to contain letters, numbers and special characters, and can't be based
 on a dictionary word.
+{: .vscc-notify-warning }
 
 ```bash
 $ ssh pubgw1.daplab.ch
@@ -76,34 +78,32 @@ passwd: all authentication tokens updated successfully.
 Shared connection to pubgw1.daplab.ch closed.
 ```
 
-You can now access the [Hue interface](https://hue.daplab.ch), and login with the username 
+You can now access the [Hue interface](https://hue.daplab.ch), and login with the username
 and password just set. If you lost your password, you can always
 [request the re-generate the password](mailto:benoit@daplab.ch?Subject=Password Recovery).
-{: .vscc-notify-info }
 
-# Python 2.7
 
-In order to have python 2.7 as the default version, please run:
+## Python version
+
+The DAPLAB has both python2.7 and python3.4 installed. To switch between them,
+use one of the `module load` commands below:
 
 ```
 module load python2.7
+module load python3.4
 ```
 
-Validate that it's ok:
-```
-python --version
-Python 2.7.11
-```
+You can validate that it's ok by running `python --version`.
 
 Woot!
 
-## DAPLAB Admins Setup
+# DAPLAB Admins Setup
 
 This section is specific to the DAPLAB Admins in order to ease their life accessing
 frequently different servers.
 
-In order to access to every nodes transparently via the gw, the following lines can be 
-added in `~/.ssh/config`
+In order to access to every nodes transparently via the gateway, the following lines can be
+added in `~/.ssh/config`:
 
 ```
 Host daplab-*.fri.lan
@@ -121,8 +121,8 @@ You can then ssh directly into any internal servers:
 ssh daplab-rt-11.fri.lan
 ```
 
-To access internal UIs from outside the DAPLAB wifi, you can use [sshuttle](https://github.com/apenwarr/sshuttle)
- 
+To access internal UIs from outside the DAPLAB wifi, you can use [sshuttle](https://github.com/apenwarr/sshuttle):
+
 ```bash
 sshuttle --dns -r pubgw1.daplab.ch 10.10.10.0/24
 ```
@@ -133,9 +133,9 @@ And then you can ssh to daplab servers as if you where local to the infrastructu
 ssh daplab-gw-1.fri.lan
 ```
 
-**MacOS Yosemite Users ?**
+You are a **MacOS Yosemite User ?**
 
-You need to add an extra route in order to have the setup working properly (more details
+Then, you need to add an extra route in order to have the setup working properly (more details
 [here](http://www.evoila.de/openstack-opensource/running-a-poors-man-vpn-on-yosemite-with-sshuttle-and-ssh/?lang=en)):
 
 ```
