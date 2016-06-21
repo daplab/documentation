@@ -7,13 +7,13 @@ pages:
     - 'Data Craftmanship': 'data_craftsmanship.md'
 
 - Tutorials:
-    - 'HDFS Tutorial': 'tutorial_hdfs.md'
-    - 'Hive Tutorial': 'tutorial_hive.md'
-    - 'Pig Tutorial': 'tutorial_pig.md'
-    - 'Spark Tutorial': 'tutorial_spark.md'
-    - 'Kafka Tutorial': 'tutorial_kafka.md'
-    - 'Cassandra Tutorial': 'tutorial_cassandra.md'
-    - 'All Tutorials': 'tutorial_all.md'
+    - 'All Tutorials': 'tutorials/index.md'
+    - 'HDFS Tutorial': 'tutorials/hdfs.md'
+    - 'Hive Tutorial': 'tutorials/hive.md'
+    - 'Pig Tutorial': 'tutorials/pig.md'
+    - 'Spark Tutorial': 'tutorials/spark.md'
+    - 'Kafka Tutorial': 'tutorials/kafka.md'
+    - 'Cassandra Tutorial': 'tutorials/cassandra.md'
 
 - Projects:
     - 'Zefix Project': 'project_zefix.md'
