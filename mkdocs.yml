@@ -20,7 +20,7 @@ pages:
     - 'Highly available HTTPS': 'projects/https-ha.md'
     - 'Hive Auto Partitioner': 'projects/hiveautopartitioner.md'
     - 'HiveQLBot': 'projects/hive-ql-bot.md'
-    - 'Notebook': 'notebook/index.md'
+    - 'Notebook': 'projects/notebook.md'
     - 'Nutch Crawler': 'projects/nutch.md'
     - 'SwissSim Project': 'projects/swisssim.md'
     - 'Zefix Project': 'projects/zefix.md'
