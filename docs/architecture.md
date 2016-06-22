@@ -27,6 +27,31 @@ more in depth in our [tutorials](tutorials/index.md) and other resources.
 __Ambari__ is a graphical interface to provision, manage and monitor HADOOP clusters easily, while __ZooKeeper__
  provides a distributed synchronization (for maintaining configuration information and naming) through a centralized service.
 
+# About HADOOP 2
+
+Most of the following information have been taken from the articles [_What is Apache Tez?_](https://www.infoq.com/articles/apache-tez-saha-murthy)
+and [_Hadoop 2 vs 1_](http://www.tomsitpro.com/articles/hadoop-2-vs-1,2-718.html). We encourage you to read them for more in-depth explanations.
+{: .vscc-notify-info }
+
+The major changes between HADOOP 1 and HADOOP 2 are the introduction the introduction of HDFS federation and the resource manager YARN.
+There is also a new execution engine, Tez, which  generalizes the MapReduce paradigm to a more powerful framework
+based on expressing computations as a _dataflow graph_.
+
+ ![hadoop 2](images/hadoop2.png)
+
+In Hadoop 1, a single Namenode managed the entire namespace for a Hadoop cluster.
+With __HDFS federation__, multiple Namenode servers manage namespaces and this allows for horizontal scaling,
+performance improvements, and multiple namespaces.
+
+ __YARN__ , HADOOP users are no longer limited to working the I/O intensive, high latency MapReduce framework, but can
+ run other processing models. YARN also simplifies the management of resources and brings significant performance
+ improvements to HADOOP.
+
+ __Tez__ is one of the new processing models of HADOOP 2. It allows developers to build end-user applications (such as
+Hive and Pig) with much better performance and flexibility. It gets around some limitations imposed by MapReduce and
+makes near-real-time query processing possible.
+
+
 # DAPLAB architecture
 
 DAPLAB Architecture follows a typical Data Lake architecture.

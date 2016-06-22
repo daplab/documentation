@@ -1,10 +1,24 @@
-
-This page aims at creating a "copy-paste"-like tutorial to run your first 
-[Hive](https://hive.apache.org) query.
-
-This tutorial assumes you have a [proper environment setup](getting_started.md) 
+This tutorial assumes you have a [proper environment setup](getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
+
+This page aims at creating a "copy-paste"-like tutorial to run your first
+[Hive](https://hive.apache.org) query.
+
+-------------------------------------
+# Introduction
+
+Hive is a "pluggable software" runing on top of YARN/HDFS. Its primary goal was is
+to facilitate reading, writing, and managing large datasets residing in distributed storage using SQL.
+
+With Hive, it is possible to project a structure onto data already in storage and to write
+__Hive Query Language (HQL)__ statements that are similar to standard SQL statements. Of course, Hive
+implements only a limited subset of SQL commands, but is still quite helpful.
+
+Under the hood, HQL statement are translated into _MapReduce_ jobs and executed across a Hadoop cluster.
+
+----------------------------------------
+
 
 # Resources
 
@@ -14,24 +28,25 @@ This tutorial is heavily inspired from the HortonWorks tutorial and is illustrat
 
 # Creating a database, a table and loading data
 
-Note: In order to have this tutorial to work for everybody, 
+Note: In order to have this tutorial to work for everybody,
 it will create a database prefixed by your username (`${env:USER}` inside hive)
 
 ## Pre-steps
 
-1. Downloading the data and uncompressing it
+1) Download the data and uncompress it:
 
 ```bash
 wget http://seanlahman.com/files/database/lahman591-csv.zip
 unzip lahman591-csv.zip
 ```
 
-2. Copy the locally unzipped data into your home folder in HDFS 
-(the tailing "." points you to /user/$(whoami)). 
+
+2) Copy the locally unzipped data into your home folder in HDFS
+(the tailing "." points you to `/user/$(whoami)`):
 See [HDFS tutorial](tutorial_hdfs.md) if you're not familiar with HDFS.
 
 ```bash
-hdfs dfs -copyFromLocal *.csv . 
+hdfs dfs -copyFromLocal *.csv .
 ```
 
 ## Create a database in Hive
@@ -46,7 +61,7 @@ create database ${env:USER}_test;
 
 ```sql
 $ hive
- 
+
 use ${env:USER}_test;
 create table temp_batting (col_value STRING);
 LOAD DATA INPATH '/user/${env:USER}/Batting.csv' OVERWRITE INTO TABLE temp_batting;
@@ -56,7 +71,7 @@ LOAD DATA INPATH '/user/${env:USER}/Batting.csv' OVERWRITE INTO TABLE temp_batti
 
 ```sql
 $ hive
- 
+
 use ${env:USER}_test;
 create table batting (player_id STRING, year INT, runs INT);
 insert overwrite table batting  
@@ -71,7 +86,7 @@ insert overwrite table batting
 
 ```sql
 $ hive --database ${USER}_test
- 
+
 SELECT year, max(runs) FROM batting GROUP BY year;
 ```
 
@@ -79,7 +94,7 @@ SELECT year, max(runs) FROM batting GROUP BY year;
 
 ```sql
 $ hive --database ${USER}_test
- 
+
 SELECT a.year, a.player_id, a.runs from batting a  
 JOIN (SELECT year, max(runs) runs FROM batting GROUP BY year ) b  
 ON (a.year = b.year AND a.runs = b.runs) ;
@@ -89,23 +104,23 @@ Woot!
 
 # Hive on Tez
 
-Weel, there is nothing to do, since HDP 2.3 Tez is the default execution engine!
+Weel, there is nothing to do, since HDP 2.3 Tez (see [about hadoop 2](../architecture/#about-hadoop-2)) is the default execution engine!
 
 Woot #2!
 
 
 # Hive external table
 
-As you might have noticed, with hive "normal" tables, you need to upload the data in HDFS, 
-create a temp table, load the data into this temp table, create another, final, 
-table and eventually copy and format the data from the temp table to the final one. 
+As you might have noticed, with hive "normal" tables, you need to upload the data in HDFS,
+create a temp table, load the data into this temp table, create another, final,
+table and eventually copy and format the data from the temp table to the final one.
 You kill a unicorn when doing all that...
 
 Another idea is to rely on hive external table, which will read the data directly from the CSV file.
 
 Let's create a table mapping the CSV file and run a query on top of it.
 
-There's one gotcha here, the external table location (where the data is physically stored) 
+There's one gotcha here, the external table location (where the data is physically stored)
 **MUST** be a folder. We'll change the directory structure to accommodate this requirement.
 
 ```bash
@@ -117,14 +132,11 @@ And then create the external table
 
 ```sql
 $ hive --database ${USER}_test
- 
-create EXTERNAL table batting_ext (player_id STRING, year INT, stint STRING, team STRING, lg STRING, 
-    G STRING, G_batting STRING, AB STRING, runs INT, H STRING, x2B STRING, x3B STRING, HR STRING, 
-    RBI STRING, SB STRING, CS STRING, BB STRING, SO STRING, IBB STRING, HBP STRING, SH STRING, SF STRING, 
-    GIDP STRING, G_Old STRING) 
+
+create EXTERNAL table batting_ext (player_id STRING, year INT, stint STRING, team STRING, lg STRING, G STRING, G_batting STRING, AB STRING, runs INT, H STRING, x2B STRING, x3B STRING, HR STRING, RBI STRING, SB STRING, CS STRING, BB STRING, SO STRING, IBB STRING, HBP STRING, SH STRING, SF STRING, GIDP STRING, G_Old STRING)
   ROW FORMAT
   DELIMITED FIELDS TERMINATED BY ','
-  LINES TERMINATED BY '\n' 
+  LINES TERMINATED BY '\n'
   STORED AS TEXTFILE
   LOCATION '/user/${env:USER}/Batting/';
 ```
@@ -133,9 +145,9 @@ Let's run the two queries
 
 ```sql
 $ hive --database ${USER}_test
- 
+
 SELECT year, max(runs) FROM batting_ext GROUP BY year;
- 
+
 SELECT a.year, a.player_id, a.runs from batting_ext a  
   JOIN (SELECT year, max(runs) runs FROM batting_ext GROUP BY year ) b  
   ON (a.year = b.year AND a.runs = b.runs) ;
@@ -149,7 +161,7 @@ Once you're done, you can cleanup your environment, deleting the tables and the 
 
 ```sql
 $ hive
- 
+
 drop table temp_batting;
 drop table batting;
 drop table batting_ext;
@@ -158,7 +170,7 @@ drop database ${env:USER}_test;
 
 # Job Failing in OutOfMemory?
 
-Since Hive is using Tez by default as execution engine, you need to increase the Tez 
+Since Hive is using Tez by default as execution engine, you need to increase the Tez
 container size.
 
 * In Hive, you can
