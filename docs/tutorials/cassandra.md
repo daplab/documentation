@@ -1,13 +1,37 @@
 
-This page aims at creating a "copy-paste"-like tutorial to run your first 
-[Cassandra](https://cassandra.apache.org) queries.
-
-
-This tutorial assumes you have a [proper environment setup](getting_started.md) 
+This tutorial assumes you have a [proper environment setup](getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 
-# Resources 
+This page aims at creating a "copy-paste"-like tutorial to run your first
+[Cassandra](https://cassandra.apache.org) queries.
+
+--------------------------------------------------------------
+# Introduction
+
+
+We assume that you understand the basic concepts of column-oriented databases. If not, please google a bit and then come back.
+{: .vscc-notify-info }
+
+As explained [here](http://www.planetcassandra.org/what-is-apache-cassandra/){:target:"_blank"},
+Cassandra is a distributed database for managing large amounts of structured data across many commodity servers, while providing highly available service and no single point of failure. Born at Facebook, it is built on Amazon's Dynamo and Google's BigTable.  It also features a powerful query language, __CQL__, to interact with.
+
+One of the originalities of Cassandra is its architecture. Rather than using a legacy _master-slave_ or a manual sharded architecture,
+it has what is called a __masterless “ring” design__.  In Cassandra, all nodes play an identical role; there is no concept of a master node, with all nodes communicating with each other equally. This means that Cassandra has no single point of failure and it is easy to add/remove nodes from the ring.
+
+We use the word "ring" because Cassandra uses a consistent hashing algorithm to distribute data among a cluster.
+At start up each node is assigned a token range which determines its position in the cluster and the rage of data stored by the node. Thus, each node in a Cassandra cluster is responsible for a certain set of data which is determined by the partitioner. A __partitioner__ is a hash function for computing the resultant token for a particular row key. This token is then used to determine the node which will store the first replica.  
+
+Since the machine holding the data is derived from the row key, the lookup is very fast. One drawback, though, is that Cassandra does not support _partial row key_ queries. It is also very important to choose wisely your row keys, to ensure that data are evenly spread across nodes.
+
+Keys in Cassandra are important and somewhat difficult to wrasp. In short, with __simple primary keys__, the former is also called a _partition key_ and determines the node in which data are stored. But it is also possible to use _compound (composite) primary keys_. 
+
+A __compound primary key__ consists of the partition key and one or more additional columns that determine clustering. The partition key determines which node stores the data. It is responsible for data distribution across the nodes. The additional columns determine per-partition clustering. Clustering is a storage engine process that sorts data within the partition.
+
+
+--------------------------------------------------------------
+
+# Resources
 
 * The [official documentation from Datastax on CQL](http://docs.datastax.com/en/cql/3.3/cql/cqlIntro.html),
   the query language of Cassandra
@@ -123,7 +147,7 @@ Hopefully Cassandra is already installed in the DAPLAB environment, and you don'
 care about that.
 
 In a nutshell, Cassandra install is really straight forward. Debian/Ubuntu has a few trick
-in there, but you can always refer to the 
+in there, but you can always refer to the
 [proper documentation](http://docs.datastax.com/en/cassandra/2.0/cassandra/install/installDeb_t.html)
 
 On Redhat/CentOS, at the time of writing:
@@ -140,6 +164,6 @@ Important config options in `/etc/cassandra/conf/cassandra.yaml` are:
 
 - `cluster_name`: the name of the cluster, current value is 'DAPLAB1'
 - `num_tokens`: number of tokens (i.e. ranges) a node own in the ring, values are 256 and 512
-- `listen_address` and `rpc_address`: ip addresses the node is listening to, 
+- `listen_address` and `rpc_address`: ip addresses the node is listening to,
    current value is the public ip address
 - `data_file_directories`: directories where the data is stored.

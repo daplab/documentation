@@ -8,12 +8,12 @@ pages:
 
 - Tutorials:
     - 'All Tutorials': 'tutorials/index.md'
-    - 'HDFS Tutorial': 'tutorials/hdfs.md'
-    - 'Hive Tutorial': 'tutorials/hive.md'
-    - 'Pig Tutorial': 'tutorials/pig.md'
-    - 'Spark Tutorial': 'tutorials/spark.md'
-    - 'Kafka Tutorial': 'tutorials/kafka.md'
-    - 'Cassandra Tutorial': 'tutorials/cassandra.md'
+    - 'Cassandra': 'tutorials/cassandra.md'
+    - 'HDFS': 'tutorials/hdfs.md'
+    - 'Hive': 'tutorials/hive.md'
+    - 'Kafka': 'tutorials/kafka.md'
+    - 'Pig': 'tutorials/pig.md'
+    - 'Spark': 'tutorials/spark.md'
 
 - Projects:
     - 'All Projects': 'projects/index.md'

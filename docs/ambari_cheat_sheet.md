@@ -3,7 +3,7 @@ Ambari Cheat Sheet
 
 [http://ambari.apache.org Ambari] is the web frontend to administer the Hadoop platform.
 DAPLAB is running Ambari v2. Official documentation for Ambari and how to use
-it is available either on the Ambari wiki or in the 
+it is available either on the Ambari wiki or in the
 [HortonWorks documentation](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/ch_Overview_Ambari_Users_Guide.html).
 This page aims at giving some tips and tricks, and contextualizing to the DAPLAB
 infrastructure the examples found online.
@@ -33,17 +33,13 @@ curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin
 
 # Alerts Definition
 
-* http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/_alert_definitions_and_instances.html
-* https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/alert-definitions.md
+* [documentation sur HortonWorks](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/_alert_definitions_and_instances.html)
+* [ambari sur GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/alert-definitions.md)
 
 ```bash
 curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions
-```
 
 curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions?AlertDefinition/service_name=HIVE
-
-
-
 
 /usr/local/bin/ambari_check_test.sh
 
@@ -70,13 +66,14 @@ payload='{
 }'
 
 curl -v -X DELETE -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/alert_definitions/102
+```
 
 
 
 
 # Deleting a Journal Node
 
-Source: https://cwiki.apache.org/confluence/display/AMBARI/Using+APIs+to+delete+a+service+or+all+host+components+on+a+host
+Source [ici](https://cwiki.apache.org/confluence/display/AMBARI/Using+APIs+to+delete+a+service+or+all+host+components+on+a+host).
 
 ```
 cluster=DAPLAB02
@@ -85,19 +82,30 @@ host=daplab-wn-24.fri.lan
 
 1. Ensure the JournalNode is stopped
 
-    ```curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' https://admin.daplab.ch/api/v1/clusters/${cluster}/hosts/${host}/host_components/JOURNALNODE```
+```sh
+curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' https://admin.daplab.ch/api/v1/clusters/${cluster}/hosts/${host}/host_components/JOURNALNODE
+```
 
 2. Delete the JournalNode
 
-    ```curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X DELETE https://admin.daplab.ch/api/v1/clusters/${cluster}/hosts/${host}/host_components/JOURNALNODE```
+```sh
+curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X DELETE https://admin.daplab.ch/api/v1/clusters/${cluster}/hosts/${host}/host_components/JOURNALNODE
+```
 
 
-Assign JournalNode
+# Assign JournalNode
+
 Assign the role of JournalNode using the following command:
+
+```sh
 curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X POST https://admin.daplab.ch/api/v1/clusters/DAPLAB02/hosts/daplab-wn-24.fri.lan/host_components/JOURNALNODE
-Install Journalnode
+```
+
+# Install Journalnode
+
 Now go ahead and install the JournalNode.
+
+```sh
 curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X PUT -d '{"RequestInfo":{"context":"Install JournalNode"},"Body":{"HostRoles":{"state":"INSTALLED"}}}' https://admin.daplab.ch/api/v1/clusters/DAPLAB02/hosts/daplab-wn-24.fri.lan/host_components/JOURNALNODE
-
-(reference: http://zdatainc.com/2015/09/add-journalnode-to-ambari-managed-hadoop-cluster/)
-
+```
+(reference: [http://zdatainc.com/2015/09/add-journalnode-to-ambari-managed-hadoop-cluster/](http://zdatainc.com/2015/09/add-journalnode-to-ambari-managed-hadoop-cluster/))

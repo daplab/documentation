@@ -47,4 +47,6 @@ So, your Twitter account will not be compromised in any way.
    all these keys by following the instructions at the end of the tutorial.<br/>
    ![Twitter1](images/twitter4.png)
 
-Source of this page: [https://databricks-training.s3.amazonaws.com/realtime-processing-with-spark-streaming.html#twitter-credential-setup](https://databricks-training.s3.amazonaws.com/realtime-processing-with-spark-streaming.html#twitter-credential-setup)
+Source of this page:
+
+[https://databricks-training.s3.amazonaws.com/realtime-processing-with-spark-streaming.html#twitter-credential-setup](https://databricks-training.s3.amazonaws.com/realtime-processing-with-spark-streaming.html#twitter-credential-setup)

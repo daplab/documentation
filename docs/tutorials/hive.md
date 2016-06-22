@@ -8,7 +8,7 @@ This page aims at creating a "copy-paste"-like tutorial to run your first
 -------------------------------------
 # Introduction
 
-Hive is a "pluggable software" runing on top of YARN/HDFS. Its primary goal was is
+Hive is a "pluggable software" running on top of YARN/HDFS. Its primary goal was is
 to facilitate reading, writing, and managing large datasets residing in distributed storage using SQL.
 
 With Hive, it is possible to project a structure onto data already in storage and to write

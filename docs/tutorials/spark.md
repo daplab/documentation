@@ -1,13 +1,23 @@
-
-This page aims at creating a "copy-paste"-like tutorial to run your first 
-[Spark](https://spark.apache.org) job.
-
-
-This tutorial assumes you have a [proper environment setup](getting_started.md) 
+This tutorial assumes you have a [proper environment setup](getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 
-# Resources 
+This page aims at creating a "copy-paste"-like tutorial to run your first
+[Spark](https://spark.apache.org) job.
+
+-------------------------------------
+# Introduction
+
+From the [docs](https://spark.apache.org/docs/1.5.1/){:target="_blank"}, Apache Spark is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming.
+
+Spark makes it easier to write MapReduce jobs and offers connectors to a large array of data sources, such as HDFS, Cassandra, HBase, and S3.
+
+
+
+-------------------------------------
+
+
+# Resources
 
 * The [official Spark documentation](https://spark.apache.org/docs/1.5.1/) is an
   excellent starting point.
@@ -40,14 +50,14 @@ Woot! Enjoy running Spark!
 
 # SparkSQL
 
-[SparkQL](https://spark.apache.org/sql/) is a module of Spark to work with structured data, 
-i.e. data is an associated schema or metadata. It is seamlessly associated with Hive. 
+[SparkQL](https://spark.apache.org/sql/) is a module of Spark to work with structured data,
+i.e. data is an associated schema or metadata. It is seamlessly associated with Hive.
 The following few lines show how query Hive from Spark:
 
 ```scala
 // (inside Spark repl)
 val sqlContext = new org.apache.spark.sql.hive.HiveContext(sc)
-  
+
 sqlContext.sql("FROM meteo SELECT date, temperature, station WHERE station = 'SMA'")
   .collect().foreach(println)
 ```
@@ -64,7 +74,8 @@ sqlContext.sql("FROM meteo SELECT date, temperature, station").filter(r => r(2) 
 
 ## Integration with Cassandra
 
-Run the command above with the following additional parameters: 
+Run the command above with the following additional parameters:
+
 `--jars /tmp/sparssandra-1.0.0-SNAPSHOT.jar --conf spark.cassandra.connection.host=cassandra1.fri.lan`
 
 Altogether, the command to launch spark is:
