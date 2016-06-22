@@ -9,14 +9,40 @@ This page aims at creating a "copy-paste"-like tutorial to publish and receive y
 -----------------------------------------------------
 # Introduction
 
-Kafka is a distributed, partitioned, replicated commit log service. It can act like a messaging system, with
-some unique features.
+Apache Kafka is a distributed, partitioned, replicated commit log service. It is designed to be
+elastic and easy to extend: it is possible to add machines, called __brokers__ to a Kafka __cluster__
+without interruption.
 
-One important trait of Kafka is that it supports two messaging models: either _queuing_ or _publish-subscribe_.
-In short, each consumer labels itself with a _consumer group_ name. If multiple consumers have the same consumer
-group, then you have a traditional queuing system: each message is treated by one consumer only (load-balancing).
+ Within a cluster (a group of machines/brokers), Kafka maintains feeds of messages in categories called __topics__.
+ Each topic is divided into one or more __partitions__, where messages are stored. Multiple partitions is are
+ interesting when a topic expects a large amount of messages, since each partition is handled by one broker.
+ Multiple brokers thus means more storage space and, more importantly, parallelized treatment.
+
+ ![Kafka - cluster, partitions and brokers](../images/kafka-brokers.png)    
+
+In the above figure, topic A has one partition replicated twice. Topic B has two partitions, also replicated twice.
+Thus, each partition has a _leader_, responsible of any read/write operation initialized by consumers/producers, and
+two _followers_, which hold a passive replica of the data. In case the leader fails, one of the two followers is
+ready to take its place. The same broker can be leader and follower for different partitions.
+
+__Producers__ publish data into a topic of their choice. They are also responsible for choosing which message
+is attributed to which partition. They can thus choose their approach for load balancing. By default, Kafka will
+distribute data at random between partitions. When a new message is added to a partition, it receives a unique
+sequential numeric identifier called an __offset__. Thus, ordering within a partition is guaranteed, but not
+across partitions.
+
+__Consumers__ retrieve messages in a _pulling fashion_. They can choose one of two messaging models, _queuing_ or
+_publish-subscribe_, through the notion of __consumer groups__.
+In short each consumer labels itself with a _consumer group_ name. If multiple consumers have the same consumer
+group, then you have a traditional queuing system: each message is treated by one consumer only (load-balancing - for this to work well, you should have as many consumers as you have partitions inside the topic).
 If multiple consumer groups exist, then you have a publish-subscribe system: all messages are broadcasted to all
 consumers. You can of course mix the two approaches.
+
+![Kafka - consumer groups](../images/kafka-consumer-groups.png)
+
+The figure above represents a two server (brokers) Kafka cluster hosting four partitions (P0-P3) with two consumer groups.
+Consumer group A has two consumer instances and group B has four. Group A and Group B use the publish-subscribe feature,
+while consumers inside each group use the queuing feature.
 
 For more information about how Kafka works, have a look at the [documentation](http://kafka.apache.org/documentation.html#introduction).
 
