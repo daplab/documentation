@@ -4,6 +4,7 @@ pages:
 - User Documentation:
     - 'Getting Started': 'getting_started.md'
     - 'DAPLAB Architecture': 'architecture.md'
+    - 'DAPLAB modules': 'modules.md'
 #    - 'Data Craftmanship': 'data_craftsmanship.md' TODO
 
 - Tutorials:
