@@ -17,16 +17,6 @@ pages:
     - 'Pig': 'tutorials/pig.md'
     - 'Spark': 'tutorials/spark.md'
 
-- Projects:
-    - 'All Projects': 'projects/index.md'
-    - 'Highly available HTTPS': 'projects/https-ha.md'
-    - 'Hive Auto Partitioner': 'projects/hiveautopartitioner.md'
-    - 'HiveQLBot': 'projects/hive-ql-bot.md'
-    - 'Notebook': 'projects/notebook.md'
-    - 'Nutch Crawler': 'projects/nutch.md'
-    - 'SwissSim Project': 'projects/swisssim.md'
-    - 'Zefix Project': 'projects/zefix.md'
-
 - Others:
     - 'Hacky Thursdays': 'hacky_thursdays.md'
     - 'Twitter API Credentials': 'twitter_account.md'

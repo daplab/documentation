@@ -39,6 +39,14 @@ code.text {
     color: rgb(51,51,51);
 }
 
+.align-center {
+    text-align: center;
+}
+
+.display-block {
+    display: block;
+}
+
 /* =========== */
 
 .vscc-notify-info, .vscc-notify-success, .vscc-notify-warning, .vscc-notify-error {
