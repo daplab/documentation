@@ -103,7 +103,7 @@ BROKERS="daplab-rt-11.fri.lan:6667,daplab-rt-12.fri.lan:6667,daplab-rt-13.fri.la
 
 ```bash
 /usr/hdp/current/kafka-broker/bin/kafka-topics.sh --create \
-  --zookeeper $ZK
+  --zookeeper $ZK \
   --replication-factor 2 \
   --partitions 1 \
   --topic test-$(whoami)
