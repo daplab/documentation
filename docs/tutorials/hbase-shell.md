@@ -56,14 +56,18 @@ You can now ask the system about the table you created by running:
 ```
 describe 'students'
 
-COLUMN FAMILIES DESCRIPTION                                                                             
-{NAME => 'account', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => '
-FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLO
-CKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}                                      
-{NAME => 'address', BLOOMFILTER => 'ROW', VERSIONS => '1', IN_MEMORY => 'false', KEEP_DELETED_CELLS => '
-FALSE', DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE', MIN_VERSIONS => '0', BLO
-CKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}                                      
-2 row(s) in 0.1240 seconds
+COLUMN FAMILIES DESCRIPTION   
+                                                                          
+{NAME => 'account', BLOOMFILTER => 'ROW', VERSIONS => '1',
+IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE',
+DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE',
+MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}  
+
+{NAME => 'address', BLOOMFILTER => 'ROW', VERSIONS => '1',
+IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE',
+DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE',
+MIN_VERSIONS => '0', BLOCKCACHE => 'true', BLOCKSIZE => '65536', REPLICATION_SCOPE => '0'}  
+
 ```
 The table seems fine and the two column families are present. Note also the "VERSIONS" here, which is set to 1. It means that when you update a record, the previous values will not be kept.
 
