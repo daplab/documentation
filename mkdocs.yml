@@ -9,6 +9,7 @@ pages:
 - Tutorials:
     - 'All Tutorials': 'tutorials/index.md'
     - 'Cassandra': 'tutorials/cassandra.md'
+    - 'HBase Shell': 'tutorials/hbase-shell.md'
     - 'HDFS': 'tutorials/hdfs.md'
     - 'Hive': 'tutorials/hive.md'
     - 'Kafka': 'tutorials/kafka.md'
