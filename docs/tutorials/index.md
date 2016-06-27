@@ -5,12 +5,13 @@ community driven, don't hesitate to update, enhance or just fix a typo.
 
 ### Basic tutorials, *copy-paste*-style
 
+- [Cassandra Hello World](cassandra.md) -- Hello world introduction to [Cassandra](https://cassandra.apache.org/){:target="_blank"}
+- [HBase Shell](hbase-shell.md) -- Introduction to [HBase](https://hbase.apache.org/){:target="_blank"} through the hbase shell interface
 - [HDFS Hello World](hdfs.md) -- Quick introduction to HDFS command line interface
-- [Hive Hello World](hive.md) -- Hello world introduction to [Hive](https://hive.apache.org/)
-- [Pig Hello World](pig.md) -- Hello world introduction to [Pig](https://pig.apache.org/)
-- [Spark Hello World](spark.md) -- Hello world introduction to [Spark](https://spark.apache.org/)
-- [Kafka Hello World](kafka.md) -- Hello world introduction to [Kafka](https://kafka.apache.org/)
-- [Cassandra Hello World](cassandra.md) -- Hello world introduction to [Cassandra](https://cassandra.apache.org/)
+- [Hive Hello World](hive.md) -- Hello world introduction to [Hive](https://hive.apache.org/){:target="_blank"}
+- [Kafka Hello World](kafka.md) -- Hello world introduction to [Kafka](https://kafka.apache.org/){:target="_blank"}
+- [Pig Hello World](pig.md) -- Hello world introduction to [Pig](https://pig.apache.org/){:target="_blank"}
+- [Spark Hello World](spark.md) -- Hello world introduction to [Spark](https://spark.apache.org/){:target="_blank"}
 
 <!--
 ### Data Science
@@ -30,3 +31,8 @@ community driven, don't hesitate to update, enhance or just fix a typo.
   project to start deploying [YARN](http://hadoop.apache.org/docs/current/hadoop-yarn/hadoop-yarn-site/YARN.html) application
 - [Ingesting Twitter Firehose in YARN](twitter_firehose.md) -- YARN application reading from [Twitter Firehose](https://dev.twitter.com/streaming/firehose)
   and storing into HDFS.
+
+
+You can also have a look at the [Hacky Thursdays](../hacky_thursdays.md) page,
+ which features really cool daplab projects with source code AND explanations.
+ {: .vscc-notify-info }

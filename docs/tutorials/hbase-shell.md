@@ -43,7 +43,7 @@ Table manipulations commands have similar names than SQL, but their syntax is qu
 
 Here, you cover only some of them.
 
-## Create a table and add data to it
+# Create a table and add data to it
 
 Create a simple table named _students_ with two column families:
 
@@ -57,7 +57,7 @@ You can now ask the system about the table you created by running:
 describe 'students'
 
 COLUMN FAMILIES DESCRIPTION   
-                                                                          
+
 {NAME => 'account', BLOOMFILTER => 'ROW', VERSIONS => '1',
 IN_MEMORY => 'false', KEEP_DELETED_CELLS => 'FALSE',
 DATA_BLOCK_ENCODING => 'NONE', TTL => 'FOREVER', COMPRESSION => 'NONE',
@@ -158,7 +158,7 @@ scan 'students', { COLUMN => 'account:name', FILTER => "ValueFilter(=, 'substrin
 
 Let's find students living in California:
 ```
-scan 'students', { FILTER => "ValueFilter(=, 'binary:CA')" } // less performant
+scan 'students', { FILTER => "ValueFilter(=, 'binary:CA')" } # less performant
 scan 'students', { COLUMN => 'address:state', FILTER => "ValueFilter(=, 'binary:CA')" }
 ```
 
@@ -166,4 +166,51 @@ Here are some more complex queries:
 ```
 scan 'students', {COLUMNS => ['address:state', 'account:name'], LIMIT => 2, STARTROW => 'student2'}
 scan 'students', {FILTER => "ColumnPrefixFilter ('s')" } // address:state, address:street
+scan 'students', {FILTER => "ColumnPrefixFilter ('s') AND FirstKeyOnlyFilter()" }
 ```
+
+# Versioning
+
+Let's say we want to add versioning support for student names:
+
+```
+alter 'students', NAME => 'account', VERSIONS => 4
+```
+
+Now, let's update some records:
+
+```
+put 'students', 'student1', 'account:name', 'Sophie'
+put 'students', 'student1', 'account:name', 'Brigitte'
+```
+
+If you scan the database, you only see the latest record, Brigitte. But with the following command, you can get all the previous versions:
+
+```
+get 'students', 'student1', {COLUMN => 'account:name', VERSIONS => 3}
+COLUMN         CELL
+account:name   timestamp=1467036672278, value=Brigitte  
+account:name   timestamp=1467036650524, value=Sophie
+account:name   timestamp=1466602165794, value=Alice
+```
+
+# Clean up
+
+When you have finished playing around, we need to delete the table.
+
+Let's delete one cell, one row or one column family:
+
+```php
+delete 'students', 'student3', 'address:state' // delete a cell
+deleteall 'students', 'student2'               // delete a row
+alter 'students', 'delete' => 'address'        // delete a column family
+```
+
+Finally, to delete the whole table, you must first disable it. Here is the code:
+
+```
+disable 'students'
+drop 'students'
+```
+
+Woot !
