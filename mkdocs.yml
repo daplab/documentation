@@ -16,6 +16,7 @@ pages:
     - 'Kafka': 'tutorials/kafka.md'
     - 'Pig': 'tutorials/pig.md'
     - 'Spark': 'tutorials/spark.md'
+    - 'Spark Python (PySpark)': 'tutorials/pyspark-python.md'
 
 - Others:
     - 'Hacky Thursdays': 'hacky_thursdays.md'

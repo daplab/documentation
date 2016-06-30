@@ -8,10 +8,21 @@ This page aims at creating a "copy-paste"-like tutorial to run your first
 -------------------------------------
 # Introduction
 
-From the [docs](https://spark.apache.org/docs/1.5.1/){:target="_blank"}, Apache Spark is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming.
+From the [docs](https://spark.apache.org/docs/1.5.1/){:target="\_blank"}, Apache Spark is a fast and general-purpose cluster computing system. It provides high-level APIs in Java, Scala, Python and R, and an optimized engine that supports general execution graphs. It also supports a rich set of higher-level tools including Spark SQL for SQL and structured data processing, MLlib for machine learning, GraphX for graph processing, and Spark Streaming.
 
 Spark makes it easier to write MapReduce jobs and offers connectors to a large array of data sources, such as HDFS, Cassandra, HBase, and S3.
 
+![Spark architecture](../images/spark-schema.png)
+
+# Spark basic concepts
+
+A Spark application is made of a __driver program__, which runs the _main_ function and launches __parallel operation__ on a cluster.
+One of the key concepts is the __resilitent distributed dataset (RDD)__, a collection of elements partitioned across the nodes of the cluster that can be operated in parallel.
+An RDD can be created from a file stored in a supported file system (like HDFS), from a source (Cassandra, Kafka) or from an existing collection. Parallel operations always
+consist of a transformation of some RDD.
+RDDs can be persisted in memory for better efficiency when reused across parallel operation (they are serialized and sent across the cluster by default) and, more important, they _automatically recover_ from node failure.
+
+When Spark runs a function in parallel, it ships _a copy_ of each variable the function uses. If your program needs to share variables across tasks, it must explicitly state so by creating and using either a __broadcast variable__ or an __accumulator__. Broadcast variables are read-only shared variables cached in memory on all nodes, while accumulators are variables that can be "added" to (counters, sum, etc.).
 
 
 -------------------------------------
@@ -134,11 +145,4 @@ someRdd.mapPartitions { part =>
     foo.mangle(x)
   }
 }
-```
-
-# PySpark
-
-```
-export SPARK_HOME=/usr/hdp/current/spark-client/
-export PYTHONPATH=${SPARK_HOME}/python:${SPARK_HOME}/python/build:${SPARK_HOME}/python/lib/py4j-0.8.2.1-src.zip
 ```
