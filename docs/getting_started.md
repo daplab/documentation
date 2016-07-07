@@ -51,7 +51,7 @@ use the ssh config described below, you're not forced to remember this trick.
 
 You can now access the [Hue interface](https://hue.daplab.ch), and login with the username
 and password just set. If you lost your password, you can always
-[request to re-generate the password](mailto:benoit@daplab.ch?Subject=Password Recovery).
+[re-generate the password](https://portal.daplab.ch/request_reset).
 {: .vscc-notify-success }
 
 # SSH keys
