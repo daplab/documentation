@@ -53,7 +53,7 @@ data haystack, the wider background and broader perspective the better.
 The DAPLAB follows this reality and is thus open to everyone,
 the only requirement is to have a computer :).
 
-We also meet every [Thursday evening](hacky_thursday.md) for hacking data and discuss
+We also meet every [Thursday evening](hacky_thursdays.md) for hacking data and discuss
 about various hadoop-related technologies. Feel free to join us !
 
 
