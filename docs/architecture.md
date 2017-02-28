@@ -59,7 +59,7 @@ DAPLAB Architecture follows a typical Data Lake architecture.
 ![High level architecture](images/architecture.png)
 
 Users have physical SSH access to so-called __Gateways or Edge servers__, and interact with Hadoop services from there.
-Users have also access to user interaces such as [Ambari](ambari_cheat_sheet.md) or [Hue](https://hue.daplab.ch/).
+Users have also access to user interaces such as [Ambari](ambar_cheat_sheet.md) or [Hue](https://hue.daplab.ch/).
 User Gateways have __home directories__ mounted on a SAN via NFS in order to share home folders between gateways.
 
 __Applications__ are either run as long living YARN applications, or have dedicated gateways simply called
@@ -112,7 +112,7 @@ In total, the DAPLAB has __372 cores__ at its disposal, as well as __323 TB__ of
 
 
 DAPLAB capacity: <br />
-_Total Cores_ : 72 cores + 32 cores + 96 cores + 24 cores + 96 cores + 48 cores + 4 = __372 cores__ <br />
-_Total Disk_  : 27 + 16 + 96 + 20 + 96 + 48 + 20 =  __323 TB__<br/>
-_Total RAM_   : 32 + 32 + 130 + 130 + 520 + 130 + 4 = __978 TB__
+_Total Cores_ : __1168 cores__ <br />
+_Total Disk_  :  __597 TB__<br/>
+_Total RAM_   :  __6248 GB__
 {: .vscc-notify-info }
