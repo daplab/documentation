@@ -1,5 +1,5 @@
 
-This tutorial assumes you have a [proper environment setup](getting_started.md)
+This tutorial assumes you have a [proper environment setup](/getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 

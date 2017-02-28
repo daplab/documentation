@@ -3,7 +3,7 @@
 This page aims at creating a "copy-paste"-like tutorial to publish and receive your first 
 [Kafka](https://kafka.apache.org) messages.
 
-This tutorial assumes you have a [proper environment setup](getting_started.md) 
+This tutorial assumes you have a [proper environment setup](/getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 

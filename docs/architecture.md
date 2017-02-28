@@ -59,7 +59,7 @@ DAPLAB Architecture follows a typical Data Lake architecture.
 ![High level architecture](images/architecture.png)
 
 Users have physical SSH access to so-called __Gateways or Edge servers__, and interact with Hadoop services from there.
-Users have also access to user interaces such as [Ambari](ambar_cheat_sheet.md) or [Hue](https://hue.daplab.ch/).
+Users have also access to user interaces such as [Ambari](ambari_cheat_sheet.md) or [Hue](https://hue.daplab.ch/).
 User Gateways have __home directories__ mounted on a SAN via NFS in order to share home folders between gateways.
 
 __Applications__ are either run as long living YARN applications, or have dedicated gateways simply called

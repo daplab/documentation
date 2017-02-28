@@ -1,4 +1,4 @@
-This tutorial assumes you have a [proper environment setup](getting_started.md)
+This tutorial assumes you have a [proper environment setup](/getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 
@@ -94,7 +94,7 @@ DUMP max_runs;
 
 # Pig with Hive binding (HCatalog)
 
-This part relies on [Hive Tutorial](tutorial_hive.md) for uploading the data and
+This part relies on [Hive Tutorial](hive.md) for uploading the data and
 creating the table. We assume that a table `${USER}_test` exists.
 
 ## Running Pig with HCatalog

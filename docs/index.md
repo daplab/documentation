@@ -36,7 +36,7 @@ to the servers running the components. See the [architecture page](architecture.
 
 ### Web Interfaces
 
--   Hue: <https://hue.daplab.ch>
+<!-- -   Hue: <https://hue.daplab.ch> -->
 -   Ambari: <https://admin.daplab.ch>
 
 ### Programmatic Interfaces

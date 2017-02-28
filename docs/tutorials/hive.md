@@ -1,4 +1,4 @@
-This tutorial assumes you have a [proper environment setup](getting_started.md)
+This tutorial assumes you have a [proper environment setup](/getting_started.md)
 to access the DAPLAB cluster.
 {: .vscc-notify-info }
 
@@ -43,7 +43,7 @@ unzip lahman591-csv.zip
 
 2) Copy the locally unzipped data into your home folder in HDFS
 (the tailing "." points you to `/user/$(whoami)`):
-See [HDFS tutorial](tutorial_hdfs.md) if you're not familiar with HDFS.
+See [HDFS tutorial](hdfs.md) if you're not familiar with HDFS.
 
 ```bash
 hdfs dfs -copyFromLocal *.csv .
