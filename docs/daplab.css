@@ -23,6 +23,7 @@ blockquote {
 div.col-md-9 img {
     margin: 15px auto;
     display: block;
+    max-width: 100%;
 }
 
 code {

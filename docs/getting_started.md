@@ -8,8 +8,8 @@ Quicklinks:<br/>
 
 ## Pre-requirements
 
-* **SSH client** (for Windows, we recommend the use of [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html)
-  and see [how to create a key with PuTTY](https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-putty-on-digitalocean-droplets-windows-users))
+* **SSH client** (for Windows, we recommend the use of [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html){:target="_blank"}
+  and see [how to create a key with PuTTY](https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-putty-on-digitalocean-droplets-windows-users){:target="_blank"})
 * **A browser** -- well, if you can access this page, you should have met this requirement :)
 
 ## Creating an account
@@ -21,12 +21,12 @@ Here are the steps to create a new DAPLAB account:
 ![portal menubar](images/new-user.png)
 
 1. select "New User" on the top menubar and fill the form. You will soon receive a
-confirmation email.
+confirmation email (as soon as an administrator got the time to review your application form).
 
-2. Once the email received, you can go to "Request Password Reset" and enter your
+2. Once the email received, you can go to <a href="https://portal.daplab.ch/request_reset" target="_blank">Request Password Reset</a> and enter your
   username. You will again receive an email containing a _token_.
 
-3. Go tot "Finish Password Reset", enter your username as well as the _token_ you
+3. Go to <a href="https://portal.daplab.ch/reset_password" target="_blank">Finish Password Reset</a>, enter your username as well as the _token_ you
   just received by email. This last step will give you a temporary password.
 
 ## First login
@@ -56,14 +56,19 @@ and password just set. If you lost your password, you can always
 
 # SSH keys
 
-In case you don't want to login with a password every time, you can __send your _public_ SSH key__ to [Benoit](mailto:benoit@daplab.ch).
+## Using a key instead of a password
 
-Once done, you can use the tricks described below.
+In case you don't want to login with a password every time, you can copy your public key to the `~/.ssh/authorized_keys` file in your daplab home directory.
 
+__Create a key__: If you don't already have a key on your system, you need to generate one. On a unix-based system, creating a ssh key is done using `ssh-keygen -t rsa -b 2048`. It should generate two files (private and public key) which default to `~/.ssh/id_rsa` and `~/.ssh/id_rsa.pub` respectively.
+
+__Copy your key__: On your local system, navigate to `~/.ssh` and copy the content of your public key file (the one ending with `.pug`). SSH into the daplab and paste it to the `~/.ssh/authorized_keys` file (you might need to create it). Note that those steps can also be performed automatically by using the commandline tool `ssh-copy-id`.
+
+Once this is done, you can use the tricks described below.
 
 ## Environment Setup
 
-The following configuration can be added in your `~/.ssh/config` file:
+The following configuration can be added in your `~/.ssh/config` file (given you have setup the key-based ssh login):
 
 ```
 Host pubgw1.daplab.ch
