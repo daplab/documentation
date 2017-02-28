@@ -6,4 +6,4 @@
 mkdocs build
 
 ## Publish the files to docs.daplab.ch
-rsync --omit-dir-times --chmod=Dg+X,ugo+w,ugo+r -av site/ daplab-wn-12.fri.lan:/var/www/docs.daplab.ch
+rsync --omit-dir-times --chmod=Dg+X,ugo+w,ugo+r -av site/ daplab-app-2.fri.lan:/var/www/docs.daplab.ch
