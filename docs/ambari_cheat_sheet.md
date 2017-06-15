@@ -15,7 +15,7 @@ used to log into Ambari UI, concatenated with `:` -- `admin:admin` by default:
 ambari_credentials="admin:admin"
 ```
 
-# REST API
+### REST API
 
 * [https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/index.md)
 
@@ -31,7 +31,7 @@ curl -v -X GET -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://admin
 * `-v` gives more details about the response, including the [HTTP status code](http://en.wikipedia.org/wiki/List_of_HTTP_status_codes)
 
 
-# Alerts Definition
+### Alerts Definition
 
 * [documentation sur HortonWorks](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/bk_Ambari_Users_Guide/content/_alert_definitions_and_instances.html)
 * [ambari sur GitHub](https://github.com/apache/ambari/blob/trunk/ambari-server/docs/api/v1/alert-definitions.md)
@@ -71,7 +71,7 @@ curl -v -X DELETE -u ${ambari_credentials} -H 'X-Requested-By:ambari' https://ad
 
 
 
-# Deleting a Journal Node
+### Deleting a Journal Node
 
 Source [ici](https://cwiki.apache.org/confluence/display/AMBARI/Using+APIs+to+delete+a+service+or+all+host+components+on+a+host).
 
@@ -93,7 +93,7 @@ curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X DELETE https://admi
 ```
 
 
-# Assign JournalNode
+### Assign JournalNode
 
 Assign the role of JournalNode using the following command:
 
@@ -101,7 +101,7 @@ Assign the role of JournalNode using the following command:
 curl -u ${ambari_credentials} -H 'X-Requested-By: Ambari' -X POST https://admin.daplab.ch/api/v1/clusters/DAPLAB02/hosts/daplab-wn-24.fri.lan/host_components/JOURNALNODE
 ```
 
-# Install Journalnode
+### Install Journalnode
 
 Now go ahead and install the JournalNode.
 

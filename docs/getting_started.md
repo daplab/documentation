@@ -1,12 +1,12 @@
 # Accessing the DAPLAB
 
-Quicklinks:<br/>
-- [Hue interface -- https://hue.daplab.ch](https://hue.daplab.ch)<br/>
-- SSH access `ssh -p 2201 pubgw1.daplab.ch`
+<!-- Quicklinks:<br/>
+- [Hue interface -- https://hue.daplab.ch](https://hue.daplab.ch)<br/> -->
+SSH access &nbsp; ➙ &nbsp; `ssh -p 2201 pubgw1.daplab.ch`
 {: .vscc-notify-info }
 
 
-## Pre-requirements
+## Requirements
 
 * **SSH client** (for Windows, we recommend the use of [PuTTY](http://www.chiark.greenend.org.uk/~sgtatham/putty/download.html){:target="_blank"}
   and see [how to create a key with PuTTY](https://www.digitalocean.com/community/tutorials/how-to-use-ssh-keys-with-putty-on-digitalocean-droplets-windows-users){:target="_blank"})
@@ -20,14 +20,15 @@ Here are the steps to create a new DAPLAB account:
 
 ![portal menubar](images/new-user.png)
 
-1. select "New User" on the top menubar and fill the form. You will soon receive a
-confirmation email (as soon as an administrator got the time to review your application form).
+1. select "New User" on the top menubar and fill the form. You will soon receive a confirmation email (as soon as an administrator got the time to review your application form).
 
 2. Once the email received, you can go to <a href="https://portal.daplab.ch/request_reset" target="_blank">Request Password Reset</a> and enter your
-  username. You will again receive an email containing a _token_.
+  username. You will immediately receive an email containing a _token_.
 
 3. Go to <a href="https://portal.daplab.ch/reset_password" target="_blank">Finish Password Reset</a>, enter your username as well as the _token_ you
   just received by email. This last step will give you a temporary password.
+
+That's it ! Now, it's time for your first login. 
 
 ## First login
 
@@ -36,8 +37,7 @@ Once you get your temporary password, you can log into the gateway via ssh:
 ssh -p 2201 yourusername@pubgw1.daplab.ch
 ```
 
-A prompt will ask you your temporary password, then ask you for a new one. Please,
-ensure your password is strong enough !
+A prompt will ask you your temporary password, then ask you for a new one. Please, ensure your password is strong enough !
 
 The password has to contain letters, numbers and special characters, and can't be based
 on a dictionary word.
@@ -45,14 +45,13 @@ on a dictionary word.
 
 Congrats, you are now a Daplab user !
 
-For enhanced security reasons, we decided to move the SSH port to `2201`. If you
-use the ssh config described below, you're not forced to remember this trick.
+For enhanced security reasons, we decided to move the SSH port to `2201`. If you use the ssh config described below, you're not forced to remember this trick.
 
 
-You can now access the [Hue interface](https://hue.daplab.ch), and login with the username
+<!-- You can now access the [Hue interface](https://hue.daplab.ch), and login with the username
 and password just set. If you lost your password, you can always
 [re-generate the password](https://portal.daplab.ch/request_reset).
-{: .vscc-notify-success }
+{: .vscc-notify-success } -->
 
 # SSH keys
 
@@ -105,7 +104,7 @@ Host daplab-*.fri.lan
 
 (_mind updating the params, more particularly the ssh key and the User_)
 
-You can then ssh directly into any internal servers:
+You can then ssh directly into any internal server:
 
 ```
 ssh daplab-rt-11.fri.lan

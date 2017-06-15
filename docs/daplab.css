@@ -3,6 +3,7 @@
 @import url('https://fonts.googleapis.com/css?family=Open+Sans:400,700,700italic,400italic');
 
 /* =========== */
+
 body {
     font-family: "Open Sans", Arial;
     line-height: 1.5;
@@ -46,6 +47,14 @@ code.text {
 
 .display-block {
     display: block;
+}
+
+/* =========== */
+
+.bs-sidebar .nav > .active > a, .bs-sidebar .nav > .active:hover > a, .bs-sidebar .nav > .active:focus > a {
+    font-weight: normal; 
+    background-color: #18bc9c;
+    color: #ecf0f1;
 }
 
 /* =========== */

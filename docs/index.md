@@ -19,13 +19,13 @@ to enhance the documentation by submitting pull requests of the
 
 
 The DAPLAB platform is currently running
-[**HDP 2.3.x**](http://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.3.4/index.html)
+[**HDP 2.5.x**](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)
 based on **Hadoop 2.7.x**, with
-[Ambari 2.2.x](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/index.html)
+[Ambari 2.5.x](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/index.html)
 for management.
-{: .vscc-notify-success }
+{: .vscc-notify-info }
 
-![Commodity Hardware](0hardware0.jpeg){: width=720px }
+![Commodity Hardware](images/0hardware0.jpeg){: width=720px }
 
 Access to the DAPLAB Platform
 -----------------------------
