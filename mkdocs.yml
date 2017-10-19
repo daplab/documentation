@@ -17,6 +17,7 @@ pages:
     - 'Pig': 'tutorials/pig.md'
     - 'Spark': 'tutorials/spark.md'
     - 'Spark Python (PySpark)': 'tutorials/pyspark-python.md'
+    - 'Zeppelin': 'tutorials/zeppelin.md'
 
 - Others:
     - 'Hacky Thursdays': 'hacky_thursdays.md'

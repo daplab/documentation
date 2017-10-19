@@ -8,7 +8,7 @@ This page aims at creating a "copy-paste"-like tutorial to run your first
 -------------------------------------
 # Introduction
 
-Hive is a "pluggable software" running on top of YARN/HDFS. Its primary goal was is
+Hive is a "pluggable software" running on top of YARN/HDFS. Its primary goal is
 to facilitate reading, writing, and managing large datasets residing in distributed storage using SQL.
 
 With Hive, it is possible to project a structure onto data already in storage and to write
@@ -30,6 +30,20 @@ This tutorial is heavily inspired from the HortonWorks tutorial and is illustrat
 
 Note: In order to have this tutorial to work for everybody,
 it will create a database prefixed by your username (`${env:USER}` inside hive)
+
+## About the data
+
+Here, we will use a CSV file with batting records, i.e. statistics about baseball players for each year.
+
+The headers are:
+
+    playerID, yearID, stint, teamID, lgID, G ,G_batting, AB, R, H, 2B, 3B, HR, RBI, SB, CS, BB, SO, IBB, HBP, SH, SF, GIDP, G_old
+
+which stand for:
+
+    G=games, AB=at bats, R=runs, H=hits, 2B=doubles, 3B=triples, HR=dinger, RBI=runs batted in, SB=stolen base, CS=caught stealing, BB=base on balls, SO=strikeout, IBB=intentional walks, HBP=hit by pitch, SH=sacrifice hits, SF=sacrifice flys, GIDP=ground into double play
+
+In this program, we will simply output the maximum number of runs made by one player for each year.
 
 ## Pre-steps
 
@@ -82,7 +96,7 @@ insert overwrite table batting
   from temp_batting;
 ```
 
-# Run your first query
+## Run your first query
 
 ```sql
 $ hive --database ${USER}_test

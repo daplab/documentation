@@ -12,6 +12,7 @@ community driven, don't hesitate to update, enhance or just fix a typo.
 - [Kafka Hello World](kafka.md) -- Hello world introduction to [Kafka](https://kafka.apache.org/){:target="_blank"}
 - [Pig Hello World](pig.md) -- Hello world introduction to [Pig](https://pig.apache.org/){:target="_blank"}
 - [Spark Hello World](spark.md) -- Hello world introduction to [Spark](https://spark.apache.org/){:target="_blank"}
+- [Zeppelin Hello World](zeppelin.md) -- Hello world introduction to [Zeppelin](https://zeppelin.apache.org){:target="_blank"}
 
 <!--
 ### Data Science
