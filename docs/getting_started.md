@@ -2,7 +2,7 @@
 
 <!-- Quicklinks:<br/>
 - [Hue interface -- https://hue.daplab.ch](https://hue.daplab.ch)<br/> -->
-SSH access &nbsp; ➙ &nbsp; `ssh -p 2201 pubgw1.daplab.ch`
+SSH access &nbsp; ➙ &nbsp; `ssh -p 2202 pubgw1.daplab.ch`
 {: .vscc-notify-info }
 
 
@@ -34,7 +34,7 @@ That's it ! Now, it's time for your first login.
 
 Once you get your temporary password, you can log into the gateway via ssh:
 ```bash
-ssh -p 2201 yourusername@pubgw1.daplab.ch
+ssh -p 2202 yourusername@pubgw1.daplab.ch
 ```
 
 A prompt will ask you your temporary password, then ask you for a new one. Please, ensure your password is strong enough !
@@ -45,7 +45,7 @@ on a dictionary word.
 
 Congrats, you are now a Daplab user !
 
-For enhanced security reasons, we decided to move the SSH port to `2201`. If you use the ssh config described below, you're not forced to remember this trick.
+For enhanced security reasons, we decided to move the SSH port to `2202`. If you use the ssh config described below, you're not forced to remember this trick.
 
 
 <!-- You can now access the [Hue interface](https://hue.daplab.ch), and login with the username
@@ -71,7 +71,7 @@ The following configuration can be added in your `~/.ssh/config` file (given you
 
 ```
 Host pubgw1.daplab.ch
-    Port 2201
+    Port 2202
     PreferredAuthentications publickey,password
     IdentityFile ~/.ssh/id_rsa
     ForwardAgent yes
