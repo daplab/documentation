@@ -25,8 +25,8 @@ The HDP architecture is presented in the figure below.
 ![HDP data platform](images/HDP_2.3.png)
 
 
-The DAPLAB platform is currently running
-[**HDP 2.5.x**](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)
+As of August 2017, DAPLAB platform is running
+[**HDP 2.6.x**](https://docs.hortonworks.com/HDPDocuments/HDP2/HDP-2.5.0/bk_release-notes/content/ch_relnotes_v250.html)
 based on **Hadoop 2.7.x**, with
 [Ambari 2.5.x](http://docs.hortonworks.com/HDPDocuments/Ambari-2.2.0.0/index.html)
 for management.
@@ -85,9 +85,10 @@ makes near-real-time query processing possible.
 | Sqoop            | 1.4.6          | 
 | ZooKeeper        | 2.4.6          | 
 | Ambari           | 2.5            | 
-| Apache Spark     | 1.6.2 || 2.0.0 | 
-| Apache Kafka     | 0.10.0         | 
-| Apache Cassandra | 3.0.7          | 
+| Apache Spark     | 1.6.3          | 
+| Apache Spark2    | 2.1.0          | 
+| Apache Kafka     | 0.10.1         | 
+| Apache Cassandra | 3.11.0         | 
 
 -------------------------
 
